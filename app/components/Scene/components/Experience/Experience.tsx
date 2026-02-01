@@ -3,7 +3,7 @@
 import DJController from "@/app/components/DJController/DJController";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import fragmentShader from "../../shaders/fragment.glsl";
 import vertexShader from "../../shaders/vertex.glsl";
@@ -16,6 +16,14 @@ export default function SmokeExperience({ onReady }: ExperienceProps) {
   const shaderMaterialRef = useRef<THREE.ShaderMaterial>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera>(null);
   const objectRef = useRef<THREE.Group>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     cameraRef.current?.lookAt(0.2, 0.2, 0.2);
@@ -56,6 +64,7 @@ export default function SmokeExperience({ onReady }: ExperienceProps) {
       <PerspectiveCamera
         ref={cameraRef}
         position={[0.7, 0.9, 0.6]}
+        fov={isMobile ? 80 : 50}
         makeDefault
       />
     </>
