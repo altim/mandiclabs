@@ -41,6 +41,10 @@
   align-items: center;
   justify-self: end;
 
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
   a {
     text-decoration: none;
     color: #fff;
