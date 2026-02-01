@@ -8,7 +8,11 @@ import * as THREE from "three";
 import fragmentShader from "../../shaders/fragment.glsl";
 import vertexShader from "../../shaders/vertex.glsl";
 
-export default function SmokeExperience() {
+interface ExperienceProps {
+  onReady?: () => void;
+}
+
+export default function SmokeExperience({ onReady }: ExperienceProps) {
   const shaderMaterialRef = useRef<THREE.ShaderMaterial>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera>(null);
   const objectRef = useRef<THREE.Group>(null);
@@ -46,7 +50,7 @@ export default function SmokeExperience() {
         />
       </mesh>
       <group position={[0.2, 0, 0.2]} ref={objectRef}>
-        <DJController />
+        <DJController onReady={onReady} />
       </group>
 
       <PerspectiveCamera

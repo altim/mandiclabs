@@ -2,8 +2,15 @@ import { useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
 import * as THREE from "three";
 
-export default function DJController() {
-  const djController = useGLTF("./DJController.glb");
+const MODEL_PATH = "./DJController-compressed.glb";
+const DRACO_PATH = "/draco/";
+
+interface DJControllerProps {
+  onReady?: () => void;
+}
+
+export default function DJController({ onReady }: DJControllerProps) {
+  const djController = useGLTF(MODEL_PATH, DRACO_PATH);
 
   useEffect(() => {
     djController.scene.traverse((child) => {
@@ -16,7 +23,8 @@ export default function DJController() {
         });
       }
     });
-  }, [djController]);
+    onReady?.();
+  }, [djController, onReady]);
 
   return (
     <primitive
