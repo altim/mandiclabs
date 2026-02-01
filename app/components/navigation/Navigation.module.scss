@@ -1,0 +1,55 @@
+.root {
+  width: 100vw;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  z-index: 100;
+}
+
+.logoWrapper {
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: center;
+  grid-gap: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.4s;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  &:hover {
+    color: #de3d00;
+  }
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+.menu {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  grid-gap: 24px;
+  align-items: center;
+  justify-self: end;
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.4s;
+    font-size: 16px;
+    font-weight: bold;
+
+    &:hover {
+      color: #de3d00;
+    }
+  }
+}

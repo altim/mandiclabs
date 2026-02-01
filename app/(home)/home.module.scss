@@ -1,0 +1,172 @@
+:root {
+  --page-width: 1200px;
+}
+
+.wrapper1 {
+  width: 100%;
+  height: 300dvh;
+  position: relative;
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+}
+
+.contentInner {
+  max-width: var(--page-width);
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.content1 {
+  top: 150px;
+
+  h1 {
+    font-size: 92px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2),
+      0 16px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  animation: fade-out ease-in-out;
+  animation-timeline: view();
+  animation-range: exit;
+}
+
+.content2 {
+  top: 150vh;
+  transform: translateY(-50%);
+
+  animation: fade-in ease-in-out, fade-out ease-in-out;
+  animation-timeline: view(), view();
+  animation-range: -250px 50vh, 50vh calc(100vh + 250px);
+}
+
+.content2Inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  justify-items: start;
+}
+
+.text2 {
+  max-width: 66%;
+
+  p {
+    font-size: 42px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.content3 {
+  top: 250vh;
+  transform: translateY(-50%);
+
+  animation: fade-in ease-in-out;
+  animation-timeline: view();
+  animation-range: -250px 50vh;
+}
+
+.content3Inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: end;
+  justify-items: end;
+}
+
+.text3 {
+  max-width: 75%;
+
+  h3 {
+    font-size: 52px;
+    color: #fff;
+    margin-bottom: 0.2em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2),
+      0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  p {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 1em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.section {
+  width: 100%;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.section1 {
+  background: #fff;
+  text-align: center;
+}
+
+.wrapper2 {
+  width: 100%;
+  height: 300dvh;
+}
+
+.section2 {
+  background: #121212;
+
+  h1 {
+    opacity: 0;
+    transform: translateX(0);
+    position: relative;
+    will-change: transform, opacity;
+    margin: 0;
+    left: 0;
+    transform-origin: left center;
+  }
+}
+
+.wrapper3 {
+  width: 100%;
+  height: 300dvh;
+}
+
+.section3 {
+  background: #121212;
+}
+
+.wrapper4 {
+  width: 100%;
+  height: 100dvh;
+}
+
+.section4 {
+  background: #121212;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
