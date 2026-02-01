@@ -55,6 +55,7 @@ export default function SmokeExperience({ onReady }: ExperienceProps) {
             uTime: { value: 0 },
           }}
           wireframe={true}
+          depthWrite={false}
         />
       </mesh>
       <group position={[0.2, 0, 0.2]} ref={objectRef}>
