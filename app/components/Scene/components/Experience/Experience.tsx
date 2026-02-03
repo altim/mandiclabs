@@ -29,11 +29,9 @@ export default function SmokeExperience({ onReady }: ExperienceProps) {
     cameraRef.current?.lookAt(0.2, 0.2, 0.2);
   }, []);
 
-  // Update shader uniforms each frame
   useFrame((state, delta) => {
     if (!shaderMaterialRef.current) return;
 
-    // Update time uniform for constant animation
     shaderMaterialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
 
     if (objectRef.current) {

@@ -25,8 +25,7 @@ export function LenisProvider({ children }: { children: ReactNode }) {
       smoothWheel: true,
     });
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLenis(lenisInstance); // Intentional: Initialize external library once on mount
+    setLenis(lenisInstance);
 
     function raf(time: number) {
       lenisInstance.raf(time);

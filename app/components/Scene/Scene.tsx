@@ -9,7 +9,6 @@ import styles from "./Scene.module.scss";
 const MODEL_PATH = "./DJController-compressed.glb";
 const DRACO_PATH = "/draco/";
 
-// Start loading the model immediately with local Draco decoder
 useGLTF.preload(MODEL_PATH, DRACO_PATH);
 
 const Experience = dynamic(() => import("./components/Experience/Experience"), {

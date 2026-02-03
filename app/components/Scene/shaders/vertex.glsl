@@ -2,9 +2,6 @@ varying vec2 vUv;
 uniform float uTime;
 varying float vElevation;
 
-// Classic Perlin 3D Noise 
-// by Stefan Gustavson
-//
 vec4 permute(vec4 x) {
     return mod(((x * 34.0) + 1.0) * x, 289.0);
 }
@@ -16,12 +13,12 @@ vec3 fade(vec3 t) {
 }
 
 float cnoise(vec3 P) {
-    vec3 Pi0 = floor(P); // Integer part for indexing
-    vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
+    vec3 Pi0 = floor(P);
+    vec3 Pi1 = Pi0 + vec3(1.0);
     Pi0 = mod(Pi0, 289.0);
     Pi1 = mod(Pi1, 289.0);
-    vec3 Pf0 = fract(P); // Fractional part for interpolation
-    vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+    vec3 Pf0 = fract(P);
+    vec3 Pf1 = Pf0 - vec3(1.0);
     vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
     vec4 iy = vec4(Pi0.yy, Pi1.yy);
     vec4 iz0 = Pi0.zzzz;
@@ -87,16 +84,11 @@ void main() {
 
     vUv = uv;
 
-    // Calculate distance from center for radial waves
     float distanceFromCenter = length(position);
 
-    // Create radial waves using distance
     float elevation = sin(uv.x - 0.5) * sin(uv.y - 0.5);
-    // Add some variation with Perlin noise
     elevation += cnoise(vec3(position * 3.0 - uTime * 0.2)) * 0.3;
-    // elevation += cnoise(position * 3.0 - vec3(0.0, uTime * 0.2, 0.0)) * 0.3;
 
-    // Displace the vertex along its vertex normal in local/object space
     vec3 displacedPosition = position + normalize(normal) * elevation;
 
     vElevation = elevation;
